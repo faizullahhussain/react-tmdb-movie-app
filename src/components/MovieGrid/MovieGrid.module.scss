@@ -11,11 +11,13 @@
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 1fr), 1fr));
+    gap: 0.8rem;
   }
 
   @media (max-width: 320px) {
-    grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr));
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
 }
 .section-title {

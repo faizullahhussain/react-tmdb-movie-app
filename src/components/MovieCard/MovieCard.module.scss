@@ -8,6 +8,10 @@
   max-width: 230px;
   width: 100%;
 
+  @media (max-width: 320px) {
+    max-width: 100%;
+  }
+
   .add-to-favorite {
     position: absolute;
     right: 10px;
