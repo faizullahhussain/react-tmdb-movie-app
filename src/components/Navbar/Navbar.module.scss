@@ -1,0 +1,141 @@
+@use "../../styles/mixin" as *;
+
+header {
+  background-color: #090e1a;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1000;
+
+  nav {
+    @include flex-layout(space-between, center);
+    position: relative;
+
+    .movie-search-logo {
+      @include flex-layout(center);
+      color: #fff;
+      text-decoration: none;
+
+      svg {
+        font-size: 2rem;
+        color: #5c4dfc;
+      }
+
+      span {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-left: 1rem;
+      }
+    }
+
+    // Toggle button default styling
+    .menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .navbar-links {
+      @include flex-layout(center, center);
+      gap: 1rem;
+
+      .search-movie {
+        @include flex-layout(center);
+        border: 1px solid #1a2536;
+        padding: 0.66rem 1rem;
+        background-color: #0d1626;
+        border-radius: 50px;
+
+        svg {
+          color: #666;
+        }
+
+        input {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          color: #fff;
+          padding-left: 0.8rem;
+          width: 300px;
+        }
+      }
+
+      .nav-links {
+        @include flex-layout(center);
+        list-style: none;
+        gap: 1rem;
+
+        a {
+          @include flex-layout(center);
+          gap: 0.5rem;
+          color: #fff;
+          text-decoration: none;
+          padding: 0.6rem 1rem;
+          border-radius: 0.4rem;
+          transition: background 0.3s ease;
+
+          &.active {
+            background-color: #5c4dfc;
+          }
+
+          &:hover:not(.active) {
+            background: linear-gradient(90deg, #6366f1 0%, #4f46e5 100%);
+            color: #ffffff;
+          }
+        }
+      }
+    }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 1024px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #060a14;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+        border-top: 1px solid #1a2536;
+
+        &.active {
+          display: flex;
+        }
+
+        .search-movie {
+          width: 100%;
+          max-width: 400px;
+          margin-right: 0;
+
+          input {
+            width: 100%;
+          }
+        }
+
+        .nav-links {
+          flex-direction: column;
+          width: 100%;
+          gap: 0.8rem;
+
+          li {
+            width: 100%;
+            text-align: center;
+          }
+
+          a {
+            justify-content: center;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

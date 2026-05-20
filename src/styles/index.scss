@@ -1,0 +1,253 @@
+@use "../components/MovieGrid/MovieGrid.module.scss" as *;
+@use "../components/Navbar/Navbar.module.scss";
+@use "../components/Footer/Footer.module.scss";
+@use "../Layout/MainLayout.module.scss";
+@use "../styles/mixin" as *;
+@use "../components/MovieCard/MovieCard.module.scss";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #060913;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+a {
+  text-decoration: none;
+}
+
+// global styling
+.container {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, #0d1527 0%, #070b15 100%);
+  border: 1px solid #131c2e;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  margin: 1rem 0 2rem 0;
+
+  @media (max-width: 768px) {
+    padding: 1.1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+
+    @media (max-width: 576px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  p {
+    color: #8f9baa;
+    font-size: 1.1rem;
+  }
+}
+.main-title {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+// movie poster
+.movie-details-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #060913;
+  color: #ffffff;
+  overflow: hidden;
+
+  .backdrop-banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 600px;
+    background-size: cover;
+    background-position: center top;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(
+          to right,
+          #060913 0%,
+          rgba(6, 9, 19, 0.6) 30%,
+          rgba(6, 9, 19, 0) 100%
+        ),
+        linear-gradient(to bottom, rgba(6, 9, 19, 0) 50%, #060913 100%);
+    }
+  }
+
+  .movie-details-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 1rem 40px 1rem;
+
+    .poster-aside {
+      flex-shrink: 0;
+
+      img {
+        width: 300px;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .movie-content {
+      flex: 1;
+      padding-top: 1.5rem;
+
+      h1 {
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .rating {
+        font-size: 1.1rem;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+
+        svg {
+          color: #ffc107;
+        }
+      }
+
+      .movie-overview {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        color: #fff;
+      }
+
+      .overview-text {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #94a3b8;
+        margin-bottom: 2.5rem;
+        max-width: 700px;
+      }
+
+      .buttons-group {
+        display: flex;
+        gap: 1.2rem;
+
+        button {
+          padding: 0.8rem 2rem;
+          border-radius: 8px;
+          border: none;
+          font-weight: 600;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+
+          &:hover {
+            transform: translateY(-2px);
+          }
+        }
+
+        .watch-trailer-btn {
+          background-color: #5c4dfc;
+          color: #fff;
+          box-shadow: 0 4px 15px rgba(92, 77, 252, 0.4);
+
+          &:hover {
+            background-color: #4b3ee3;
+          }
+        }
+
+        .add-favorite-btn {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #fff;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(4px);
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-details-wrapper {
+    .backdrop-banner {
+      width: 100%;
+      height: 400px;
+    }
+
+    .movie-details-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
+
+      .poster-aside img {
+        width: 220px;
+        height: 330px;
+      }
+
+      .movie-content {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .rating {
+          justify-content: center;
+        }
+
+        .buttons-group {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+
+          button {
+            width: 100%;
+            max-width: 300px;
+          }
+        }
+      }
+    }
+  }
+}
