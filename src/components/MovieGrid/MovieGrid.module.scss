@@ -6,6 +6,10 @@
   justify-content: start;
   gap: 1rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  }
 }
 .section-title {
   @include flex-layout(space-between, center);
