@@ -2,13 +2,20 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(186px, 100%), 1fr));
-  justify-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(min(186px, 100%), 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
 
-  @media (max-width: 420px) {
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  }
+
+  @media (max-width: 480px) {
     grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  }
+
+  @media (max-width: 320px) {
+    grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr));
   }
 }
 .section-title {
