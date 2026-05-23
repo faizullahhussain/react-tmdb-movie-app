@@ -47,6 +47,7 @@ header {
         padding: 0.66rem 1rem;
         background-color: #0d1626;
         border-radius: 50px;
+        position: relative;
 
         svg {
           color: #666;
@@ -59,6 +60,83 @@ header {
           color: #fff;
           padding-left: 0.8rem;
           width: 300px;
+        }
+
+        .search-dropdown {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin-top: 0.5rem;
+          background-color: #0d1626;
+          border: 1px solid #1a2536;
+          border-radius: 0.5rem;
+          z-index: 1001;
+          max-height: 500px;
+          overflow-y: auto;
+
+          .dropdown-list {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #1a2536;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+              background-color: #1a2536;
+            }
+
+            &.view-all {
+              justify-content: center;
+              font-weight: 600;
+              color: #5c4dfc;
+              background-color: #0d1626;
+
+              &:hover {
+                background-color: #1a2536;
+              }
+            }
+
+            &.loading {
+              justify-content: center;
+              color: #999;
+              padding: 1rem;
+            }
+
+            .dropdown-image {
+              width: 40px;
+              height: 60px;
+              object-fit: cover;
+              border-radius: 0.3rem;
+              margin-right: 1rem;
+            }
+
+            .dropdown-content {
+              flex: 1;
+
+              .dropdown-title {
+                color: #fff;
+                font-weight: 600;
+                margin: 0;
+                font-size: 0.8rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              .dropdown-year {
+                color: #999;
+                font-size: 0.85rem;
+                margin: 0.2rem 0 0;
+              }
+            }
+          }
         }
       }
 
