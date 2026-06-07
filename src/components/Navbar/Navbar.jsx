@@ -13,7 +13,6 @@ import "./Navbar.module.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
-console.log(API_KEY);
 const API_URL = "https://api.themoviedb.org/3";
 const IMG_URL = "https://image.tmdb.org/t/p/w200";
 
