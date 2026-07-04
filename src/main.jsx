@@ -6,7 +6,7 @@ import "./styles/index.scss";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HashRouter basename="/react-tmdb-movie-app">
+    <HashRouter>
       <App />
     </HashRouter>
   </StrictMode>,
