@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
 const API_URL = "https://api.themoviedb.org/3";
@@ -8,6 +8,7 @@ const IMG_URL = "https://image.tmdb.org/t/p/w500";
 const BACKDROP_URL = "https://image.tmdb.org/t/p/original";
 
 const MovieDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -43,6 +44,7 @@ const MovieDetails = () => {
 
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     setIsFavorite(!isFavorite);
+    navigate("/favorites");
   };
 
   if (!movieDetail) return <div>Loading...</div>;
@@ -79,11 +81,7 @@ const MovieDetails = () => {
 
           <div className="buttons-group">
             <button className="watch-trailer-btn">Watch Trailer</button>
-            <button
-              className="add-favorite-btn"
-              onClick={toggleFavorite}
-              style={{ color: isFavorite ? "#e11d48" : "inherit" }}
-            >
+            <button className="add-favorite-btn" onClick={toggleFavorite}>
               <FaHeart />{" "}
               {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
             </button>
